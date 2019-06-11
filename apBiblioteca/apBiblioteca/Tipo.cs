@@ -28,9 +28,19 @@ namespace apBiblioteca
             }
         }
 
+        public Tipo()
+        {
+
+        }
+
+        public Tipo(int codigo, string descricao)
+        {
+            CodigoTipo = codigo;
+            DescricaoTipo = descricao;
+        }
         public String ParaArquivo()
         {
-            return CodigoTipo.ToString() + DescricaoTipo.PadLeft(tamanhoDesc, ' ');
+            return CodigoTipo.ToString().PadLeft(tamanhoCod, ' ') + DescricaoTipo.PadRight(tamanhoDesc, ' ');
         }
 
         public int CompareTo(Tipo outro)

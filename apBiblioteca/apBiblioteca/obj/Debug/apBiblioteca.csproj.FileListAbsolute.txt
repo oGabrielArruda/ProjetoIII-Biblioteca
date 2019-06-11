@@ -10,3 +10,16 @@ Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\bin\Debug\apBiblioteca.pdb
 Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.exe
 Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.pdb
 Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmLeitores.resources
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csprojResolveAssemblyReference.cache
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmLeitores.resources
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmLivros.resources
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmBiblioteca.resources
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.Properties.Resources.resources
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csproj.GenerateResource.Cache
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csproj.CoreCompileInputs.cache
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.exe
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.pdb
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\bin\Debug\apBiblioteca.exe.config
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\bin\Debug\apBiblioteca.exe
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\bin\Debug\apBiblioteca.pdb
+C:\Users\u19170\Desktop\poj3bib\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmTipos.resources

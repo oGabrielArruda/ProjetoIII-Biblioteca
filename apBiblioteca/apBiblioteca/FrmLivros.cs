@@ -37,7 +37,7 @@ namespace apBiblioteca
       {
         nomeArquivoLivros = dlgAbrir.FileName;
         osLivros.LerDados(nomeArquivoLivros);
-        btnInicio.PerformClick();
+      // btnInicio.PerformClick();
       }
 
       osLeitores = new VetorDados<Leitor>(50); // instancia com vetor dados com 50 posições
@@ -98,9 +98,7 @@ namespace apBiblioteca
         txtCodigoLivro.Text = osLivros[indice].CodigoLivro + "";
         txtTituloLivro.Text = osLivros[indice].TituloLivro;
 
-        (grbTipoLivro.Controls[osLivros[indice].TipoLivro] as
-                                 RadioButton).Checked = true;
-
+      
         txtLeitorComLivro.Text = "000000";
         txtDataDevolucao.Text = "";
         txtNomeLeitor.Text = "";
@@ -126,9 +124,6 @@ namespace apBiblioteca
     {
       txtCodigoLivro.Clear();
       txtTituloLivro.Clear();
-      foreach (Control botao in grbTipoLivro.Controls)
-        if (botao is RadioButton)
-           (botao as RadioButton).Checked = false;
 
       txtLeitorComLivro.Text = "000000";
       txtDataDevolucao.Text = "";
@@ -213,21 +208,8 @@ namespace apBiblioteca
 
     private void btnSalvar_Click(object sender, EventArgs e)
     {
-      int qualTipo = -1, qualRadioButton = -1;
-      for (int qualItem=0; qualItem < grbTipoLivro.Controls.Count;
-               qualItem++)
-        if (grbTipoLivro.Controls[qualItem] is RadioButton)
-        {
-          qualRadioButton++;
-          if ((grbTipoLivro.Controls[qualItem] as RadioButton).Checked)
-          {
-            qualTipo = qualRadioButton;
-            break;
-          }
-        }
-        if (qualTipo == -1)
-           MessageBox.Show("Selecione um tipo de livro antes de salvar o registro!");
-        else
+            int qualTipo = int.Parse(dgvTipos.CurrentRow.Cells[0].Value.ToString());
+ 
           if (osLivros.SituacaoAtual == Situacao.incluindo) // está no modo de inclusão
           {
             var novoDado = new Livro(txtCodigoLivro.Text,
