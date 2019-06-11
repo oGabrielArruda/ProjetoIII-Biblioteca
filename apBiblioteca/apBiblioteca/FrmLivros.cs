@@ -14,9 +14,10 @@ namespace apBiblioteca
   {
     VetorDados<Livro>  osLivros; // osLivros armazenará os dados lidos e terá os métodos de manutenção
     VetorDados<Leitor> osLeitores;
+    VetorDados<Tipo> osTipos;
     int ondeIncluir = 0;        // global --> acessível na classe toda
 
-    string nomeArquivoLeitores, nomeArquivoLivros;
+        string nomeArquivoLeitores, nomeArquivoLivros, nomeArquivoTipos;
     public FrmLivros()
     {
       InitializeComponent();
@@ -46,6 +47,26 @@ namespace apBiblioteca
         nomeArquivoLeitores = dlgAbrir.FileName;
         osLeitores.LerDados(nomeArquivoLeitores);
       }
+
+
+        osTipos = new VetorDados<Tipo>(50);
+        dlgAbrir.Title = "Selecione o arquivo com os tipos dos livros";
+        if (dlgAbrir.ShowDialog() == DialogResult.OK)
+        {
+            nomeArquivoTipos = dlgAbrir.FileName;
+            osTipos.LerDados(nomeArquivoTipos);
+            ExibirTiposNoDgv();
+        }
+    }
+
+    private void ExibirTiposNoDgv()
+    {
+        dgvTipos.RowCount = osTipos.Tamanho;
+        for(int i = 0; i< osTipos.Tamanho; i++)
+         {
+                dgvTipos.Rows[i].Cells[0].Value = osTipos[i].CodigoTipo;
+                dgvTipos.Rows[i].Cells[0].Value = osTipos[i].DescricaoTipo;
+         }
     }
 
     private void btnInicio_Click(object sender, EventArgs e)
