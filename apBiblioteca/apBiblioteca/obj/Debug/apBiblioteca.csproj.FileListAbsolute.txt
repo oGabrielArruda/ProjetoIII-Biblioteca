@@ -1,0 +1,12 @@
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csprojResolveAssemblyReference.cache
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmLivros.resources
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmBiblioteca.resources
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.Properties.Resources.resources
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csproj.GenerateResource.Cache
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csproj.CoreCompileInputs.cache
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\bin\Debug\apBiblioteca.exe.config
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\bin\Debug\apBiblioteca.exe
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\bin\Debug\apBiblioteca.pdb
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.exe
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.pdb
+Y:\2-Exemplos\cap19\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmLeitores.resources
