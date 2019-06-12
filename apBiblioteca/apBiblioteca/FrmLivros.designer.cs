@@ -48,6 +48,9 @@
             this.btnSair = new System.Windows.Forms.ToolStripButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpCadastro = new System.Windows.Forms.TabPage();
+            this.dgvTipos = new System.Windows.Forms.DataGridView();
+            this.Código = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtDataDevolucao = new System.Windows.Forms.TextBox();
             this.txtNomeLeitor = new System.Windows.Forms.TextBox();
@@ -65,16 +68,13 @@
             this.stlbMensagem = new System.Windows.Forms.ToolStripStatusLabel();
             this.imlBotoes = new System.Windows.Forms.ImageList(this.components);
             this.dlgAbrir = new System.Windows.Forms.OpenFileDialog();
-            this.dgvTipos = new System.Windows.Forms.DataGridView();
-            this.Código = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barraDeFerramentas.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tpCadastro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTipos)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tpLista.SuspendLayout();
             this.ssMensagem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTipos)).BeginInit();
             this.SuspendLayout();
             // 
             // barraDeFerramentas
@@ -285,6 +285,32 @@
             this.tpCadastro.TabIndex = 0;
             this.tpCadastro.Text = "Cadastro";
             // 
+            // dgvTipos
+            // 
+            this.dgvTipos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTipos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Código,
+            this.Descricao});
+            this.dgvTipos.Location = new System.Drawing.Point(130, 118);
+            this.dgvTipos.MultiSelect = false;
+            this.dgvTipos.Name = "dgvTipos";
+            this.dgvTipos.ReadOnly = true;
+            this.dgvTipos.Size = new System.Drawing.Size(443, 173);
+            this.dgvTipos.TabIndex = 7;
+            // 
+            // Código
+            // 
+            this.Código.HeaderText = "Código Tipo";
+            this.Código.Name = "Código";
+            this.Código.ReadOnly = true;
+            // 
+            // Descricao
+            // 
+            this.Descricao.HeaderText = "Descrição Tipo";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            this.Descricao.Width = 300;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.txtDataDevolucao);
@@ -459,28 +485,6 @@
             this.dlgAbrir.CheckFileExists = false;
             this.dlgAbrir.DefaultExt = "*.txt";
             // 
-            // dgvTipos
-            // 
-            this.dgvTipos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTipos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Código,
-            this.Descricao});
-            this.dgvTipos.Location = new System.Drawing.Point(130, 118);
-            this.dgvTipos.Name = "dgvTipos";
-            this.dgvTipos.Size = new System.Drawing.Size(443, 173);
-            this.dgvTipos.TabIndex = 7;
-            // 
-            // Código
-            // 
-            this.Código.HeaderText = "Código Tipo";
-            this.Código.Name = "Código";
-            // 
-            // Descricao
-            // 
-            this.Descricao.HeaderText = "Descrição Tipo";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.Width = 300;
-            // 
             // FrmLivros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -500,12 +504,12 @@
             this.tabControl1.ResumeLayout(false);
             this.tpCadastro.ResumeLayout(false);
             this.tpCadastro.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTipos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tpLista.ResumeLayout(false);
             this.ssMensagem.ResumeLayout(false);
             this.ssMensagem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTipos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

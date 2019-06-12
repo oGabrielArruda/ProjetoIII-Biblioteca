@@ -16,6 +16,7 @@ namespace apBiblioteca
     FrmLivros frmLivros;
     FrmLeitores frmLeitores;
         FrmTipos frmTipos;
+        FrmEmprestimos frmEmprestimos;
     public FrmBiblioteca()
     {
       InitializeComponent();
@@ -44,6 +45,12 @@ namespace apBiblioteca
         {
             frmTipos = new FrmTipos();
             frmTipos.Show();
+        }
+
+        private void empréstimosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEmprestimos = new FrmEmprestimos();
+            frmEmprestimos.Show();
         }
     }
 }

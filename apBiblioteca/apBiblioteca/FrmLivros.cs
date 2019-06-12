@@ -37,7 +37,7 @@ namespace apBiblioteca
       {
         nomeArquivoLivros = dlgAbrir.FileName;
         osLivros.LerDados(nomeArquivoLivros);
-      // btnInicio.PerformClick();
+        btnInicio.PerformClick();
       }
 
       osLeitores = new VetorDados<Leitor>(50); // instancia com vetor dados com 50 posições
@@ -65,7 +65,7 @@ namespace apBiblioteca
         for(int i = 0; i< osTipos.Tamanho; i++)
          {
                 dgvTipos.Rows[i].Cells[0].Value = osTipos[i].CodigoTipo;
-                dgvTipos.Rows[i].Cells[0].Value = osTipos[i].DescricaoTipo;
+                dgvTipos.Rows[i].Cells[1].Value = osTipos[i].DescricaoTipo;
          }
     }
 
@@ -208,6 +208,7 @@ namespace apBiblioteca
 
     private void btnSalvar_Click(object sender, EventArgs e)
     {
+
             int qualTipo = int.Parse(dgvTipos.CurrentRow.Cells[0].Value.ToString());
  
           if (osLivros.SituacaoAtual == Situacao.incluindo) // está no modo de inclusão
@@ -234,6 +235,7 @@ namespace apBiblioteca
               AtualizarTela();
             }
       btnSalvar.Enabled = false;
+            dgvTipos.ReadOnly = false;
     }
 
     private void btnSair_Click(object sender, EventArgs e)
@@ -278,6 +280,7 @@ namespace apBiblioteca
     {
       osLivros.SituacaoAtual = Situacao.editando;
       txtCodigoLivro.ReadOnly = true;  // para não permitir alterar a matrícula
+            dgvTipos.ReadOnly = false;
       stlbMensagem.Text = "Modifique os campos desejados e pressione [Salvar]";
       txtTituloLivro.Focus();
 
