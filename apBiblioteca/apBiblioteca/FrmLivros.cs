@@ -37,7 +37,7 @@ namespace apBiblioteca
       {
         nomeArquivoLivros = dlgAbrir.FileName;
         osLivros.LerDados(nomeArquivoLivros);
-        btnInicio.PerformClick();
+        //btnInicio.PerformClick();
       }
 
       osLeitores = new VetorDados<Leitor>(50); // instancia com vetor dados com 50 posições
@@ -251,16 +251,22 @@ namespace apBiblioteca
 
     private void btnExcluir_Click(object sender, EventArgs e)
     {
-      if (MessageBox.Show(
-             "Deseja realmente excluir?", "Exclusão",
-             MessageBoxButtons.YesNo, 
-             MessageBoxIcon.Warning) == DialogResult.Yes)
-      {
-        osLivros.Excluir(osLivros.PosicaoAtual);
-        if (osLivros.PosicaoAtual >= osLivros.Tamanho)
-           osLivros.PosicionarNoUltimo();
-        AtualizarTela();
-      }
+            if (osLivros[osLivros.PosicaoAtual].CodigoLeitorComLivro == "000000") // se o livro não está emprestado
+            {
+                if (MessageBox.Show(
+            "Deseja realmente excluir?", "Exclusão",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    osLivros.Excluir(osLivros.PosicaoAtual);
+                    if (osLivros.PosicaoAtual >= osLivros.Tamanho)
+                        osLivros.PosicionarNoUltimo();
+                    AtualizarTela();
+                }
+            }
+            else
+                MessageBox.Show("O livro não pode ser excluído!\n Está emprestado para o leitor " + osLivros[osLivros.PosicaoAtual].CodigoLeitorComLivro,
+                    "Exclusão cancelada", MessageBoxButtons.OK);
     }
 
     private void btnProcurar_Click(object sender, EventArgs e)
