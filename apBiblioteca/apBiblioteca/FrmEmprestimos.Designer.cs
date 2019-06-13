@@ -32,15 +32,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodLivro = new System.Windows.Forms.TextBox();
-            this.Emprestar = new System.Windows.Forms.Button();
+            this.btnEmprestar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mtxtData = new System.Windows.Forms.MaskedTextBox();
+            this.dlgAbrir = new System.Windows.Forms.OpenFileDialog();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCodLeitor
             // 
             this.txtCodLeitor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodLeitor.Location = new System.Drawing.Point(232, 57);
+            this.txtCodLeitor.MaxLength = 6;
             this.txtCodLeitor.Name = "txtCodLeitor";
             this.txtCodLeitor.Size = new System.Drawing.Size(226, 26);
             this.txtCodLeitor.TabIndex = 0;
@@ -70,20 +73,22 @@
             // 
             this.txtCodLivro.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodLivro.Location = new System.Drawing.Point(232, 114);
+            this.txtCodLivro.MaxLength = 7;
             this.txtCodLivro.Name = "txtCodLivro";
             this.txtCodLivro.Size = new System.Drawing.Size(226, 26);
             this.txtCodLivro.TabIndex = 3;
             this.txtCodLivro.Leave += new System.EventHandler(this.txtCodLivro_Leave);
             // 
-            // Emprestar
+            // btnEmprestar
             // 
-            this.Emprestar.Location = new System.Drawing.Point(232, 232);
-            this.Emprestar.Name = "Emprestar";
-            this.Emprestar.Size = new System.Drawing.Size(140, 51);
-            this.Emprestar.TabIndex = 4;
-            this.Emprestar.Text = "Emprestar";
-            this.Emprestar.UseVisualStyleBackColor = true;
-            this.Emprestar.Click += new System.EventHandler(this.Emprestar_Click);
+            this.btnEmprestar.Enabled = false;
+            this.btnEmprestar.Location = new System.Drawing.Point(232, 238);
+            this.btnEmprestar.Name = "btnEmprestar";
+            this.btnEmprestar.Size = new System.Drawing.Size(140, 51);
+            this.btnEmprestar.TabIndex = 4;
+            this.btnEmprestar.Text = "Emprestar";
+            this.btnEmprestar.UseVisualStyleBackColor = true;
+            this.btnEmprestar.Click += new System.EventHandler(this.Emprestar_Click);
             // 
             // label3
             // 
@@ -95,30 +100,47 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Data Devolução:";
             // 
-            // maskedTextBox1
+            // mtxtData
             // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(232, 169);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(108, 26);
-            this.maskedTextBox1.TabIndex = 7;
-            this.maskedTextBox1.ValidatingType = typeof(System.DateTime);
+            this.mtxtData.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mtxtData.Location = new System.Drawing.Point(232, 169);
+            this.mtxtData.Mask = "00/00/0000";
+            this.mtxtData.Name = "mtxtData";
+            this.mtxtData.Size = new System.Drawing.Size(108, 26);
+            this.mtxtData.TabIndex = 7;
+            this.mtxtData.ValidatingType = typeof(System.DateTime);
+            this.mtxtData.Leave += new System.EventHandler(this.mtxtData_Leave);
+            // 
+            // dlgAbrir
+            // 
+            this.dlgAbrir.FileName = "openFileDialog1";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(357, 169);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 16);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "(dd/mm/yyyy)";
             // 
             // FrmEmprestimos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(674, 407);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.mtxtData);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.Emprestar);
+            this.Controls.Add(this.btnEmprestar);
             this.Controls.Add(this.txtCodLivro);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCodLeitor);
             this.Name = "FrmEmprestimos";
             this.Text = " Empréstimos";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmEmprestimos_FormClosing);
             this.Load += new System.EventHandler(this.FrmEmprestimos_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -131,8 +153,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtCodLivro;
-        private System.Windows.Forms.Button Emprestar;
+        private System.Windows.Forms.Button btnEmprestar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mtxtData;
+        private System.Windows.Forms.OpenFileDialog dlgAbrir;
+        private System.Windows.Forms.Label label4;
     }
 }

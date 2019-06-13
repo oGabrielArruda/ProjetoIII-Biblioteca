@@ -15,68 +15,128 @@ namespace apBiblioteca
 
         Livro oLivro;
         Leitor oLeitor;
-        VetorDados<Leitor> osLeitores;
+        DateTime dataDev;
+
+        VetorDados <Leitor> osLeitores;
         VetorDados<Livro> osLivros;
+        string nomeArqLivros, nomeArqLeitores;
+
         public FrmEmprestimos()
         {
             InitializeComponent();
         }
 
 
-        private void FrmEmprestimos_Load(object sender, EventArgs e)
+        private void FrmEmprestimos_Load(object sender, EventArgs e) 
         {
-            oLivro = new Livro();
-            oLeitor = new Leitor();
-            osLeitores = new VetorDados<Leitor>(50);
-            osLivros = new VetorDados<Livro>(50);
-        }
-
-        private void Emprestar_Click(object sender, EventArgs e)
-        {
-            oLeitor.QuantosLivrosComLeitor++;
-          //  oLeitor.CodigoLivroComLeitor[] == "";
-        }
-
-        private void txtCodLeitor_Leave(object sender, EventArgs e)
-        {
-            Leitor qualLeitor = new Leitor(txtCodLeitor.Text);
-            int onde = -1;
-            if (!osLeitores.Existe(qualLeitor, ref onde))
+            osLivros = new VetorDados<Livro>(50); // instancia-se a classe VetorDados com a classe livro como base
+            dlgAbrir.Title = "Abra o arquivo texto de livros.";
+            if(dlgAbrir.ShowDialog() == DialogResult.OK) //  o arquivo de livros é aberto
             {
-                MessageBox.Show("O leitor não está cadastrado!");
-                LimparFocar(txtCodLeitor);
+                nomeArqLivros = dlgAbrir.FileName;
+                osLivros.LerDados(nomeArqLivros); // os dados do arquivo de livros é lido
             }
-            else
-                oLeitor = qualLeitor;
+
+            osLeitores = new VetorDados<Leitor>(50); // instancia-se a classe VetorDados com a classe leitor como base
+            dlgAbrir.Title = "Abra o arquivo de leitores.";
+            if(dlgAbrir.ShowDialog() == DialogResult.OK)// o arquivo de leitores é aberto
+            {
+                nomeArqLeitores = dlgAbrir.FileName;
+                osLeitores.LerDados(nomeArqLeitores);
+            }
         }
 
-        private void txtCodLivro_Leave(object sender, EventArgs e)
+
+        private void txtCodLeitor_Leave(object sender, EventArgs e) // ao sair do campodo código do leitor
+        {
+            Leitor qualLeitor = new Leitor(txtCodLeitor.Text); 
+            int ondeLeitor = -1;
+            if (!osLeitores.Existe(qualLeitor, ref ondeLeitor)) // se NÃO existe o leitor com o referido código
+            {
+                MessageBox.Show("O leitor não está cadastrado!"); // alertamos o leitor
+                LimparFocar(txtCodLeitor); // limpamos e focamos o campo do código do leitor
+            }
+            else // se existe o leitor
+            {
+                oLeitor = osLeitores[ondeLeitor]; // atríbuimos o leitor desejado à varíavel oLeitor
+                HabilitarBtn();// tentamos habilitar o botão
+            }
+                
+        }
+
+        private void txtCodLivro_Leave(object sender, EventArgs e) // ao sair do campo do código do livro
         {
             Livro qualLivro = new Livro(txtCodLivro.Text);
-            int onde = -1;
-            if (osLivros.Existe(qualLivro, ref onde))
+            int ondeLivro = -1;
+
+            if (osLivros.Existe(qualLivro, ref ondeLivro)) // verifica-se se o código existe
             {
-                if (qualLivro.CodigoLeitorComLivro == "000000")
+                oLivro = osLivros[ondeLivro]; // se existe, atribuí-se ele ao livro que será emprestado
+                if (oLivro.CodigoLeitorComLivro == "000000") // se o livro NÃO está emprestado
                 {
-                    oLivro = qualLivro;
+                    HabilitarBtn(); // habilitamos o botão (ou tentamos, pois há restrições no método de habilitar)
                 }
-                else
+                else //se o livro já está emprestado
                 {
-                    MessageBox.Show("Livro já está emprestado!");
-                    LimparFocar(txtCodLivro);
+                    MessageBox.Show("Livro já está emprestado!"); // alertamos o usuário
+                    LimparFocar(txtCodLivro); // limpamos e focamos no campo do código do livro
                 }
             }
-            else
+            else // se o livro não existe
             {
-                MessageBox.Show("O livro não está cadastrado!");
-                LimparFocar(txtCodLivro);
+                MessageBox.Show("O livro não está cadastrado!"); // avisamos ao leitor que o livro não está cadastrado no "sistema"
+                LimparFocar(txtCodLivro); // limpamos e focamos no campó do código do livro
             }                
         }
 
-        void LimparFocar(TextBox qualTxt)
+        private void mtxtData_Leave(object sender, EventArgs e) // ao sair do campo da data de devolução
         {
-            qualTxt.Clear();
-            qualTxt.Focus();
+            try // tentamos converter a data digitada
+            {
+                dataDev = Convert.ToDateTime(mtxtData.Text); // atríbuimos à data de devolução a data digitada
+                HabilitarBtn(); // tentamos habilitar o botão
+            }
+            catch // se o usuário digitou de forma incorreta
+            {
+                MessageBox.Show("Digite a data corretamente"); // alertamos ele 
+                LimparFocar(mtxtData); //limpamos e focamos o campo de data
+            }
+        }
+
+        private void Emprestar_Click(object sender, EventArgs e) // click do botão emprestar
+        {
+            oLeitor.CodigoLivroComLeitor[oLeitor.QuantosLivrosComLeitor] = oLivro.CodigoLivro; // atribuimos ao array de livros com o leitor, o código
+                                                                      // do novo livro emprestado no índice de quantos livros o leitor pegou emprestado
+                                                                     
+            oLeitor.QuantosLivrosComLeitor++; //somamos mais 1 na quantidade de livros com o leitor, pois foi emprestado mais um nesse momento
+            oLivro.CodigoLeitorComLivro = oLeitor.CodigoLeitor; // alteramos o CódigoLeitorComLivro do livro para o código do leitor que o pegou
+        }
+
+        private void FrmEmprestimos_FormClosing(object sender, FormClosingEventArgs e) // ao fechar o formulário
+        {
+            osLeitores.GravarDados(nomeArqLeitores); // salvamos os dados nos arquivos texto de leitores e de livros
+            osLivros.GravarDados(nomeArqLivros);
+        }
+
+        void LimparFocar(TextBox qualTxt) // função de limpar e focar com TextBox
+        {
+            qualTxt.Clear(); // limpar
+            qualTxt.Focus(); // focar  :)
+        }
+
+        void LimparFocar(MaskedTextBox qualMtxt) // função de limpar e focar com MaskedTextBox (data)
+        {
+            qualMtxt.Clear(); // limpar
+            qualMtxt.Focus(); // focar :)
+        }
+
+
+        void HabilitarBtn() // função de habilitar o botão de empréstimo
+        {
+            if(txtCodLeitor.Text != "" && txtCodLivro.Text != "" && mtxtData.Text != "") // só habilitamos se não houver nenhum campo vazio
+            {
+                btnEmprestar.Enabled = true;  // habilitamos o botão
+            }
         }
     }
 }
