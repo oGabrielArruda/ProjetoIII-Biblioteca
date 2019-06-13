@@ -50,3 +50,4 @@ C:\Users\Gabripol\Desktop\puj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug
 C:\Users\Gabripol\Desktop\puj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csproj.CoreCompileInputs.cache
 C:\Users\Gabripol\Desktop\puj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.exe
 C:\Users\Gabripol\Desktop\puj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.pdb
+C:\Users\Gabripol\Desktop\puj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmDevolucao.resources

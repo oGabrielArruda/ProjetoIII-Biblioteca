@@ -37,7 +37,6 @@ namespace apBiblioteca
       {
         nomeArquivoLivros = dlgAbrir.FileName;
         osLivros.LerDados(nomeArquivoLivros);
-        //btnInicio.PerformClick();
       }
 
       osLeitores = new VetorDados<Leitor>(50); // instancia com vetor dados com 50 posições
@@ -56,6 +55,7 @@ namespace apBiblioteca
             nomeArquivoTipos = dlgAbrir.FileName;
             osTipos.LerDados(nomeArquivoTipos);
             ExibirTiposNoDgv();
+            btnInicio.PerformClick();
         }
     }
 

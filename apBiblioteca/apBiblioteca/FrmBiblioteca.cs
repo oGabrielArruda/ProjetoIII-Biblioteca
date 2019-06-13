@@ -17,6 +17,8 @@ namespace apBiblioteca
     FrmLeitores frmLeitores;
         FrmTipos frmTipos;
         FrmEmprestimos frmEmprestimos;
+        FrmDevolucao frmDevolucao;
+
     public FrmBiblioteca()
     {
       InitializeComponent();
@@ -51,6 +53,12 @@ namespace apBiblioteca
         {
             frmEmprestimos = new FrmEmprestimos();
             frmEmprestimos.Show();
+        }
+
+        private void devoluçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDevolucao = new FrmDevolucao();
+            frmDevolucao.Show();
         }
     }
 }

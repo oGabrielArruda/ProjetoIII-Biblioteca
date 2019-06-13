@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDevolucao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDevolucao.Designer.cs">
+      <DependentUpon>FrmDevolucao.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEmprestimos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tipo.cs" />
     <Compile Include="VetorDados.cs" />
+    <EmbeddedResource Include="FrmDevolucao.resx">
+      <DependentUpon>FrmDevolucao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEmprestimos.resx">
       <DependentUpon>FrmEmprestimos.cs</DependentUpon>
     </EmbeddedResource>

@@ -37,7 +37,6 @@ namespace apBiblioteca
       {
         nomeArquivoLeitores = dlgAbrir.FileName;
         osLeitores.LerDados(nomeArquivoLeitores);
-       // btnInicio.PerformClick();
       }
 
       osLivros = new VetorDados<Livro>(50); // instancia com vetor dados com 50 posições
@@ -46,7 +45,8 @@ namespace apBiblioteca
       {
         nomeArquivoLivros = dlgAbrir.FileName;
         osLivros.LerDados(nomeArquivoLivros);
-      }
+        btnInicio.PerformClick();
+       }
     }
 
     private void btnInicio_Click(object sender, EventArgs e)
