@@ -47,12 +47,13 @@ namespace apBiblioteca
             int ondeLivro = -1;
             if (osLivros.Existe(proc, ref ondeLivro)) // se o livro existe
             {
-                oLivro = osLivros[ondeLivro]; // atribuímos à variável oLivro, o livro encontrado
-                if(oLivro.CodigoLeitorComLivro == "000000") // se o livro não está emprestado para ninguém
+                if(oLivro.CodigoLeitorComLivro != "000000") // se o livro está emprestado para ninguém
                 {
-                    MessageBox.Show("O livro digitado não está emprestado!", "Devolução cancelada", MessageBoxButtons.OK); // alertamos o leitor
-                    LimparFocar(txtCodLivro); // limpamos e focamos no campo do código do livro
+                    oLivro = osLivros[ondeLivro]; // atribuímos à variável oLivro, o livro encontrado
                 }
+                else // se o livro não está emprestado para ninguém
+                MessageBox.Show("O livro digitado não está emprestado!", "Devolução cancelada", MessageBoxButtons.OK); // alertamos o leitor
+                LimparFocar(txtCodLivro); // limpamos e focamos no campo do código do livro
             }
             else // se o livro não existe
             {
@@ -64,10 +65,30 @@ namespace apBiblioteca
         private void btnDevolve_Click(object sender, EventArgs e)
         {
             AcharLeitor(); // achamos o leitor que está devolvendo o livro
+            oLeitor.CodigoLivroComLeitor[PosicaoDoLivro()] = "";
+            OrdenarCodigoLivro(PosicaoDoLivro());
             oLeitor.QuantosLivrosComLeitor--; // diminuímos sua quantidade de livros
             oLivro.CodigoLeitorComLivro = ""; // código vazio, pois o livro não está mais emprestado 
         }
 
+        void OrdenarCodigoLivro(int indice)
+        {
+            for(int i = indice; i < oLeitor.QuantosLivrosComLeitor; i++)
+            {
+                oLeitor.CodigoLivroComLeitor[indice] = oLeitor.CodigoLivroComLeitor[indice + 1];
+            }
+        }
+
+        int PosicaoDoLivro()
+        {
+            int qualIndice = -1;
+            for(int i = 0; i < oLeitor.QuantosLivrosComLeitor; i++)
+            {
+                if (oLeitor.CodigoLivroComLeitor[i] == oLivro.CodigoLivro)
+                    qualIndice = i;
+            }
+            return qualIndice;
+        }
 
         void AcharLeitor()
         {
