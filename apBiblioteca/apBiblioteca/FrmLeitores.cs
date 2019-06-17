@@ -47,6 +47,12 @@ namespace apBiblioteca
         osLivros.LerDados(nomeArquivoLivros);
         btnInicio.PerformClick();
        }
+
+            if (FrmBiblioteca.Consulta)
+            {
+                tabControl1.SelectedIndex = 1;
+                FrmBiblioteca.Consulta = false;
+            }
     }
 
     private void btnInicio_Click(object sender, EventArgs e)

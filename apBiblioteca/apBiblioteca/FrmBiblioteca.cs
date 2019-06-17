@@ -15,9 +15,10 @@ namespace apBiblioteca
 
     FrmLivros frmLivros;
     FrmLeitores frmLeitores;
-        FrmTipos frmTipos;
-        FrmEmprestimos frmEmprestimos;
-        FrmDevolucao frmDevolucao;
+    FrmTipos frmTipos;
+    FrmEmprestimos frmEmprestimos;
+    FrmDevolucao frmDevolucao;
+    public static bool Consulta = false;
 
     public FrmBiblioteca()
     {
@@ -59,6 +60,27 @@ namespace apBiblioteca
         {
             frmDevolucao = new FrmDevolucao();
             frmDevolucao.Show();
+        }
+
+        private void livrosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Consulta = true;
+            frmLivros = new FrmLivros();
+            frmLivros.Show();                       
+        }
+
+        private void leitoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Consulta = true;
+            frmLeitores = new FrmLeitores();
+            frmLeitores.Show();
+        }
+
+        private void tiposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consulta = true;
+            frmTipos = new FrmTipos();
+            frmTipos.Show();
         }
     }
 }

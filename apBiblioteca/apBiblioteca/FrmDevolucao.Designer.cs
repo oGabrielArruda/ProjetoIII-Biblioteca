@@ -90,7 +90,6 @@
             this.cbxLivros.Name = "cbxLivros";
             this.cbxLivros.Size = new System.Drawing.Size(335, 33);
             this.cbxLivros.TabIndex = 4;
-            this.cbxLivros.SelectionChangeCommitted += new System.EventHandler(this.cbxLivros_SelectionChangeCommitted);
             // 
             // label3
             // 
@@ -115,6 +114,7 @@
             this.Controls.Add(this.txtCodLeitor);
             this.Name = "FrmDevolucao";
             this.Text = "FrmDevolucao";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmDevolucao_FormClosing);
             this.Load += new System.EventHandler(this.FrmDevolucao_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

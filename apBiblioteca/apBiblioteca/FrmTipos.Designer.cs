@@ -55,8 +55,15 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.stlbMensagem = new System.Windows.Forms.ToolStripStatusLabel();
             this.imlBotoes = new System.Windows.Forms.ImageList(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tpCadastro = new System.Windows.Forms.TabPage();
+            this.tpLista = new System.Windows.Forms.TabPage();
+            this.lsbLista = new System.Windows.Forms.ListBox();
             this.barraDeFerramentas.SuspendLayout();
             this.ssMensagem.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tpCadastro.SuspendLayout();
+            this.tpLista.SuspendLayout();
             this.SuspendLayout();
             // 
             // dlgAbrir
@@ -85,7 +92,7 @@
             this.btnSair});
             this.barraDeFerramentas.Location = new System.Drawing.Point(0, 0);
             this.barraDeFerramentas.Name = "barraDeFerramentas";
-            this.barraDeFerramentas.Size = new System.Drawing.Size(715, 38);
+            this.barraDeFerramentas.Size = new System.Drawing.Size(724, 38);
             this.barraDeFerramentas.TabIndex = 1;
             this.barraDeFerramentas.Text = "toolStrip1";
             // 
@@ -245,7 +252,7 @@
             // txtCodigoTipo
             // 
             this.txtCodigoTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoTipo.Location = new System.Drawing.Point(126, 49);
+            this.txtCodigoTipo.Location = new System.Drawing.Point(108, 29);
             this.txtCodigoTipo.MaxLength = 20;
             this.txtCodigoTipo.Name = "txtCodigoTipo";
             this.txtCodigoTipo.ReadOnly = true;
@@ -257,7 +264,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 53);
+            this.label1.Location = new System.Drawing.Point(5, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 20);
             this.label1.TabIndex = 3;
@@ -267,7 +274,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 96);
+            this.label2.Location = new System.Drawing.Point(18, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 20);
             this.label2.TabIndex = 4;
@@ -276,7 +283,7 @@
             // txtDescricao
             // 
             this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescricao.Location = new System.Drawing.Point(126, 90);
+            this.txtDescricao.Location = new System.Drawing.Point(108, 70);
             this.txtDescricao.MaxLength = 20;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.ReadOnly = true;
@@ -289,9 +296,9 @@
             this.ssMensagem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.stlbMensagem});
-            this.ssMensagem.Location = new System.Drawing.Point(0, 319);
+            this.ssMensagem.Location = new System.Drawing.Point(0, 343);
             this.ssMensagem.Name = "ssMensagem";
-            this.ssMensagem.Size = new System.Drawing.Size(715, 22);
+            this.ssMensagem.Size = new System.Drawing.Size(724, 22);
             this.ssMensagem.TabIndex = 6;
             this.ssMensagem.Text = "statusStrip1";
             // 
@@ -333,16 +340,60 @@
             this.imlBotoes.Images.SetKeyName(16, "WINNEXT.BMP");
             this.imlBotoes.Images.SetKeyName(17, "WINPREV.BMP");
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tpCadastro);
+            this.tabControl1.Controls.Add(this.tpLista);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(12, 41);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(691, 299);
+            this.tabControl1.TabIndex = 7;
+            // 
+            // tpCadastro
+            // 
+            this.tpCadastro.Controls.Add(this.txtDescricao);
+            this.tpCadastro.Controls.Add(this.txtCodigoTipo);
+            this.tpCadastro.Controls.Add(this.label1);
+            this.tpCadastro.Controls.Add(this.label2);
+            this.tpCadastro.Location = new System.Drawing.Point(4, 29);
+            this.tpCadastro.Name = "tpCadastro";
+            this.tpCadastro.Padding = new System.Windows.Forms.Padding(3);
+            this.tpCadastro.Size = new System.Drawing.Size(683, 266);
+            this.tpCadastro.TabIndex = 0;
+            this.tpCadastro.Text = "Cadastro";
+            this.tpCadastro.UseVisualStyleBackColor = true;
+            // 
+            // tpLista
+            // 
+            this.tpLista.Controls.Add(this.lsbLista);
+            this.tpLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tpLista.Location = new System.Drawing.Point(4, 29);
+            this.tpLista.Name = "tpLista";
+            this.tpLista.Padding = new System.Windows.Forms.Padding(3);
+            this.tpLista.Size = new System.Drawing.Size(683, 266);
+            this.tpLista.TabIndex = 1;
+            this.tpLista.Text = "Lista";
+            this.tpLista.UseVisualStyleBackColor = true;
+            this.tpLista.Enter += new System.EventHandler(this.tpLista_Enter);
+            // 
+            // lsbLista
+            // 
+            this.lsbLista.FormattingEnabled = true;
+            this.lsbLista.ItemHeight = 18;
+            this.lsbLista.Location = new System.Drawing.Point(6, 6);
+            this.lsbLista.Name = "lsbLista";
+            this.lsbLista.Size = new System.Drawing.Size(671, 256);
+            this.lsbLista.TabIndex = 0;
+            // 
             // FrmTipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(715, 341);
+            this.ClientSize = new System.Drawing.Size(724, 365);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.ssMensagem);
-            this.Controls.Add(this.txtDescricao);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCodigoTipo);
             this.Controls.Add(this.barraDeFerramentas);
             this.Name = "FrmTipos";
             this.Text = "FrmTipos";
@@ -352,6 +403,10 @@
             this.barraDeFerramentas.PerformLayout();
             this.ssMensagem.ResumeLayout(false);
             this.ssMensagem.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tpCadastro.ResumeLayout(false);
+            this.tpCadastro.PerformLayout();
+            this.tpLista.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,5 +439,9 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel stlbMensagem;
         private System.Windows.Forms.ImageList imlBotoes;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tpCadastro;
+        private System.Windows.Forms.TabPage tpLista;
+        private System.Windows.Forms.ListBox lsbLista;
     }
 }

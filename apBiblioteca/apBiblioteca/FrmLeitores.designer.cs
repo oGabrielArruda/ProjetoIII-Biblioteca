@@ -30,7 +30,7 @@
     {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLeitores));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.barraDeFerramentas = new System.Windows.Forms.ToolStrip();
             this.btnInicio = new System.Windows.Forms.ToolStripButton();
             this.btnAnterior = new System.Windows.Forms.ToolStripButton();
@@ -386,7 +386,7 @@
             this.lsbLivros.ItemHeight = 16;
             this.lsbLivros.Location = new System.Drawing.Point(8, 6);
             this.lsbLivros.Name = "lsbLivros";
-            this.lsbLivros.Size = new System.Drawing.Size(557, 164);
+            this.lsbLivros.Size = new System.Drawing.Size(587, 276);
             this.lsbLivros.TabIndex = 0;
             // 
             // ssMensagem
@@ -467,8 +467,8 @@
             // 
             // Column4
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column4.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column4.HeaderText = "Atraso?";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;

@@ -32,6 +32,12 @@ namespace apBiblioteca
                 osTipos.LerDados(dlgAbrir.FileName);
                 btnInicio.PerformClick();
             }
+
+            if (FrmBiblioteca.Consulta)
+            {
+                tabControl1.SelectedIndex = 1;
+                FrmBiblioteca.Consulta = false;
+            }
         }
 
 
@@ -212,6 +218,11 @@ namespace apBiblioteca
             {
                 osTipos.Excluir(osTipos.PosicaoAtual);
             }
+        }
+
+        private void tpLista_Enter(object sender, EventArgs e)
+        {
+            osTipos.ExibirDados(lsbLista, "Código  Nome Tipo");
         }
     }
 }

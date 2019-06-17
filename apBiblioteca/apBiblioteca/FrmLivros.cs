@@ -57,6 +57,12 @@ namespace apBiblioteca
             ExibirTiposNoDgv();
             btnInicio.PerformClick();
         }
+
+            if (FrmBiblioteca.Consulta)
+            {
+                tabControl1.SelectedIndex = 1;
+                FrmBiblioteca.Consulta = false;
+            }
     }
 
     private void ExibirTiposNoDgv()
