@@ -41,68 +41,77 @@ namespace apBiblioteca
             }
         }
 
-        private void txtCodLivro_Leave(object sender, EventArgs e)
+        private void txtCodLeitor_Leave(object sender, EventArgs e)
         {
-            Livro proc = new Livro(txtCodLivro.Text); // livro procurado pelo seu código
-            int ondeLivro = -1;
-            if (osLivros.Existe(proc, ref ondeLivro)) // se o livro existe
+            Leitor proc = new Leitor(txtCodLeitor.Text); // váriavel do tipo leitor com o código digitado passado como parâmetro
+            int onde = -1; 
+            if (osLeitores.Existe(proc, ref onde)) // se o leitor procurado existe
             {
-                if(oLivro.CodigoLeitorComLivro != "000000") // se o livro está emprestado para ninguém
+                if (osLeitores[onde].QuantosLivrosComLeitor != 0) // se o leitor tem algum livro emprestado
                 {
-                    oLivro = osLivros[ondeLivro]; // atribuímos à variável oLivro, o livro encontrado
+                    oLeitor = osLeitores[onde]; // atribuímos a variável oLeitor o valor do leitor encontrado
+                    ExibirNoCBX(oLeitor); // exibimos os livros emprestados a este leitor no combobox
                 }
-                else // se o livro não está emprestado para ninguém
-                MessageBox.Show("O livro digitado não está emprestado!", "Devolução cancelada", MessageBoxButtons.OK); // alertamos o leitor
-                LimparFocar(txtCodLivro); // limpamos e focamos no campo do código do livro
+                else //se o leitor não tem nenhum livro emprestado
+                {
+                    MessageBox.Show("O leitor digitado não tem nenhum livro!"); // notificamos o usuário
+                    LimparFocar(txtCodLeitor); // limpamos e focamos o campo do código do leitor
+                }                    
             }
-            else // se o livro não existe
+            else // se o código do leitor não existe no arquivo texto
             {
-                MessageBox.Show("O código digitado não existe!", "Devolução cancelada", MessageBoxButtons.OK); // alertamos o usuário
-                LimparFocar(txtCodLivro); //  limpamos e focamos no campo do código do livro
+                MessageBox.Show("O código do leitor não existe"); // notificamos o usuário
+                LimparFocar(txtCodLeitor); // limpamos e focamos o campo do código do leitor
             }                
         }
 
+        void ExibirNoCBX(Leitor qualLeitor)
+        {
+            for(int i = 0; i < qualLeitor.QuantosLivrosComLeitor; i++) // enquanto índice é menor que a quantidade de livros com o leitor
+            {
+                Livro livroVez = new Livro(qualLeitor.CodigoLivroComLeitor[i]); // instanciamos a variável livroVez passando o CodigoLivroLeitor como parâmetor
+                int onde = -1;
+                if(osLivros.Existe(livroVez, ref onde)) // se o livro procurado ( livroVez ) existe
+                     cbxLivros.Items.Add(osLivros[onde].TituloLivro); // exibimos o título do livro no comboBox
+            }
+        }
+
+
         private void btnDevolve_Click(object sender, EventArgs e)
         {
-            AcharLeitor(); // achamos o leitor que está devolvendo o livro
-            oLeitor.CodigoLivroComLeitor[PosicaoDoLivro()] = "";
-            OrdenarCodigoLivro(PosicaoDoLivro());
-            oLeitor.QuantosLivrosComLeitor--; // diminuímos sua quantidade de livros
-            oLivro.CodigoLeitorComLivro = ""; // código vazio, pois o livro não está mais emprestado 
+            Devolver(); // chamamos o método devolver
         }
 
-        void OrdenarCodigoLivro(int indice)
+        void Devolver()
         {
-            for(int i = indice; i < oLeitor.QuantosLivrosComLeitor; i++)
-            {
-                oLeitor.CodigoLivroComLeitor[indice] = oLeitor.CodigoLivroComLeitor[indice + 1];
-            }
+              for(int i = 0; i < oLeitor.QuantosLivrosComLeitor; i++) // enquanto o índice for menor que a quantidade de livros com o leitor
+              {
+                  if(oLeitor.CodigoLivroComLeitor[i] == oLivro.CodigoLivro) // se o código do livro com leitor for igual ao código do livro que será devolvido
+                  {
+                    for (int y = i; y < oLeitor.QuantosLivrosComLeitor; y++) //enquanto o índice 'y' for menor que a quantidade de livros com o leitor
+                        oLeitor.CodigoLivroComLeitor[y] = oLeitor.CodigoLivroComLeitor[y + 1]; // excluímos este índice no vetor
+                    oLeitor.QuantosLivrosComLeitor--; // diminuímos a quantidade de livros com o leitor, pois ele devolveu um deles
+                    oLivro.CodigoLeitorComLivro = ""; // deixamos vazio o atributo de CodigoLeitorComLivro do livro devolvido
+                    if (oLivro.DataDevolucao < DateTime.Now) // se a data de hoje for maior que a data de devolução
+                        MessageBox.Show("O livro " + oLivro.TituloLivro +  " foi devolvido com atraso!", "Livro devolvido!"); // alertamos que o livro foi devolvido com atraso
+                    else // se a data de devolução for depois do dia de hoje
+                        MessageBox.Show("O livro " + oLivro.TituloLivro  + " foi devolvido dentro do prazo!", "Livro devolvido!"); // alertamos o leitor que o livro foi devolvido no prazo
+                  } 
+              }
+            LimparFocar(txtCodLeitor); // limpamos o campo do código do leitor
+            btnDevolve.Enabled = false; // desabilitamos o botão de devolução
+
         }
 
-        int PosicaoDoLivro()
+        private void cbxLivros_SelectionChangeCommitted(object sender, EventArgs e) // evento em que o valor escolhido do comboBox é alterado e sua aba é fechada
         {
-            int qualIndice = -1;
-            for(int i = 0; i < oLeitor.QuantosLivrosComLeitor; i++)
-            {
-                if (oLeitor.CodigoLivroComLeitor[i] == oLivro.CodigoLivro)
-                    qualIndice = i;
-            }
-            return qualIndice;
+            btnDevolve.Enabled = true; // habilitamos o botão
         }
 
-        void AcharLeitor()
+        void LimparFocar(TextBox qualTxt) // método de limpar e focar algum textbox passado como parâmetro
         {
-            string codigoLeitor = oLivro.CodigoLeitorComLivro;
-            Leitor proc = new Leitor(codigoLeitor);
-            int ondeLeitor = -1;
-            if (osLeitores.Existe(proc, ref ondeLeitor))
-                 oLeitor = osLeitores[ondeLeitor];
-        }
-
-        void LimparFocar(TextBox qualTxt)
-        {
-            qualTxt.Clear();
-            qualTxt.Focus();
+            qualTxt.Clear(); // limpa
+            qualTxt.Focus(); // foca 
         }
     }
 }

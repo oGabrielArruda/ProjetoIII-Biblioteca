@@ -1,3 +1,3 @@
-000021Júlia Alves de Arruda              Rua Margarida, 307, Vila Muriçoca                  0
-002133Orandir Almeida César              Rua da Batatinha, 231, Jardim Novo Mundo           0
+﻿000021Júlia Alves de Arruda              Rua Margarida, 307, Vila Muriçoca                  0       
+002133Orandir Almeida César              Rua da Batatinha, 231, Jardim Novo Mundo           0       
 231455Carlos Pereira Silva               Rua dos Amarais, 193, Vila Armandina               10000321
