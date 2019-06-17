@@ -13,13 +13,13 @@ namespace apBiblioteca
     public partial class FrmEmprestimos : Form
     {
 
-        Livro oLivro;
-        Leitor oLeitor;
-        DateTime dataDev;
-
-        VetorDados <Leitor> osLeitores;
-        VetorDados<Livro> osLivros;
-        string nomeArqLivros, nomeArqLeitores;
+        Livro oLivro; // declaramos o objeto oLivro do tipo Livro
+        Leitor oLeitor; // declaramos o objeto oLeitor do tipo Leitor
+        DateTime dataDev; // declaramos à variavel 'dataDev' do tipo DateTime
+         
+        VetorDados <Leitor> osLeitores; // declaramos o objeto osLivros do tipo VetorDados com o registro de Leitor
+        VetorDados<Livro> osLivros; // declaramos o objeto osLivros do tipo VetorDados com o registro de Livro
+        string nomeArqLivros, nomeArqLeitores; // string dos nomes dos arquivos abertos
 
         public FrmEmprestimos()
         {

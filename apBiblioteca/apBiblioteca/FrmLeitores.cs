@@ -12,9 +12,9 @@ namespace apBiblioteca
 {
   public partial class FrmLeitores : Form
   {
-    VetorDados<Livro>  osLivros; // osLivros armazenará os dados lidos e terá os métodos de manutenção
-    VetorDados<Leitor> osLeitores;
-    int ondeIncluir = 0;        // global --> acessível na classe toda
+    VetorDados<Livro>  osLivros; // osLivros armazenará os dados lidos e terá os métodos de manutenção para os livros
+    VetorDados<Leitor> osLeitores; // osLeitores armazenará os dados lidos e terá os métodos de manutenção para os leitores
+        int ondeIncluir = 0;        // variável para a posição de inclusão acessível na classe toda
 
     string nomeArquivoLeitores, nomeArquivoLivros;
     
@@ -25,115 +25,125 @@ namespace apBiblioteca
 
     private void FrmFunc_Load(object sender, EventArgs e)
     {
+     //-- para exibir as imagens nos botçoes //
       int indice = 0;
       barraDeFerramentas.ImageList = imlBotoes;
       foreach (ToolStripItem item in barraDeFerramentas.Items)
         if (item is ToolStripButton) // se não é separador:
           (item as ToolStripButton).ImageIndex = indice++;
+       
+      // ------------------------------------ //
 
-      osLeitores = new VetorDados<Leitor>(50); // instancia com vetor dados com 50 posições
-      dlgAbrir.Title = "Selecione o arquivo com os dados de leitores";
-      if (dlgAbrir.ShowDialog() == DialogResult.OK)
+
+      osLeitores = new VetorDados<Leitor>(50); // instancia o objeto osLeitores com a classe VetorDados 
+      dlgAbrir.Title = "Selecione o arquivo com os dados de leitores"; // mudamos o título do OpenFileDialog para o usuário saber qual arquivo deve ser aberto
+      if (dlgAbrir.ShowDialog() == DialogResult.OK)  // se abriu o arquivo
       {
-        nomeArquivoLeitores = dlgAbrir.FileName;
-        osLeitores.LerDados(nomeArquivoLeitores);
+        nomeArquivoLeitores = dlgAbrir.FileName; // string do nome do arquivo dos livros recebe o nome do arquivo aberto
+                osLeitores.LerDados(nomeArquivoLeitores); // lemos os dados do arquivo aberto
       }
 
-      osLivros = new VetorDados<Livro>(50); // instancia com vetor dados com 50 posições
-      dlgAbrir.Title = "Selecione o arquivo com os dados de livros";
-      if (dlgAbrir.ShowDialog() == DialogResult.OK)
-      {
-        nomeArquivoLivros = dlgAbrir.FileName;
-        osLivros.LerDados(nomeArquivoLivros);
-        btnInicio.PerformClick();
-       }
-
-            if (FrmBiblioteca.Consulta)
+      osLivros = new VetorDados<Livro>(50); // instancia o objeto osLivros com a classe VetorDados 
+            dlgAbrir.Title = "Selecione o arquivo com os dados de livros";   // mudamos o título do OpenFileDialog para o usuário saber qual arquivo deve ser aberto
+            if (dlgAbrir.ShowDialog() == DialogResult.OK)  // se abriu o arquivo
             {
-                tabControl1.SelectedIndex = 1;
-                FrmBiblioteca.Consulta = false;
+                nomeArquivoLivros = dlgAbrir.FileName; // string do nome do arquivo dos livros recebe o nome do arquivo aberto
+                osLivros.LerDados(nomeArquivoLivros); // lemos os dados do arquivo aberto
+                btnInicio.PerformClick(); // chamamos o método no click do botão início
+            }
+
+            if (FrmBiblioteca.Consulta) // se for aberto uma consulta
+            {
+                tabControl1.SelectedIndex = 1; // mudamos a tabPage para a lista
+                FrmBiblioteca.Consulta = false; // deixamos a variável de Consulta falsa
             }
     }
 
-    private void btnInicio_Click(object sender, EventArgs e)
+    private void btnInicio_Click(object sender, EventArgs e) // click do botão de início
     {
-      osLeitores.PosicionarNoPrimeiro();
-      AtualizarTela();
+      osLeitores.PosicionarNoPrimeiro(); // deixa a posição inicial no primeiro índice do vetor
+      AtualizarTela(); // atualiza a tela para o usuário
     }
     private void btnAnterior_Click(object sender, EventArgs e)
     {
       osLeitores.RetrocederPosicao();
-      AtualizarTela();
+      AtualizarTela(); // atualiza a tela para o usuário
     }
     private void btnProximo_Click(object sender, EventArgs e)
     {
       osLeitores.AvancarPosicao();
-      AtualizarTela();
-    }
+      AtualizarTela(); // atualiza a tela para o usuário
+    } 
     private void btnUltimo_Click(object sender, EventArgs e)
     {
       osLeitores.PosicionarNoUltimo();
-      AtualizarTela();
+      AtualizarTela(); // atualiza a tela para o usuário
     }
 
-    private void AtualizarTela()
+    private void btnSair_Click(object sender, EventArgs e)
     {
-      if (!osLeitores.EstaVazio)
+       // fecha o formulário mas antes dispara o evento FormClosing
+       Close();
+    }
+
+    private void AtualizarTela() // método que atualiza a tela e exibe os campos para o usuário
+    {
+      if (!osLeitores.EstaVazio) // se o vetor de leitores NÃO está vazio
       {
-        Leitor oLeitor = osLeitores[osLeitores.PosicaoAtual];
-        txtCodigoLeitor.Text = oLeitor.CodigoLeitor + "";
-        txtNomeLeitor.Text   = oLeitor.NomeLeitor;
-        txtEndereco.Text     = oLeitor.EnderecoLeitor;
-        dgvLivros.RowCount   = oLeitor.QuantosLivrosComLeitor+1; 
+        Leitor oLeitor = osLeitores[osLeitores.PosicaoAtual]; // objeto 'oLeitor' é igual o valor da posição atual da PosiçãoAtual de osLeitores
+        txtCodigoLeitor.Text = oLeitor.CodigoLeitor + ""; // alteramos o campo de código do leitor para o seu respectivo código
+        txtNomeLeitor.Text   = oLeitor.NomeLeitor; // alteramos também os campos de nome
+        txtEndereco.Text     = oLeitor.EnderecoLeitor; //                           &endereço
+        dgvLivros.RowCount   = oLeitor.QuantosLivrosComLeitor+1; // a quantidade de colunas do DataGridView é igual a quantidade de livros que o leitor tem emprestado
 
         for (int umLivro = 0; 
-                 umLivro < oLeitor.QuantosLivrosComLeitor; umLivro++)
+                 umLivro < oLeitor.QuantosLivrosComLeitor; umLivro++) // enquanto o índice for menor que a quantidade de livros com o leitor
         {
-          int ondeLivro = -1;
+          int ondeLivro = -1; // índice de onde encontraremos o livro
           var livroProcurado = 
-              new Livro(oLeitor.CodigoLivroComLeitor[umLivro]);
-          if (osLivros.Existe(livroProcurado, ref ondeLivro))
+              new Livro(oLeitor.CodigoLivroComLeitor[umLivro]); // instanciamos o objeto livroProcurado como um novo Livro com seu código passado como parâmetro
+          if (osLivros.Existe(livroProcurado, ref ondeLivro)) // se o livro procurado existe
           {
-            Livro oLivro = osLivros[ondeLivro];
-            dgvLivros.Rows[umLivro].Cells[0].Value = oLivro.CodigoLivro;
-            dgvLivros.Rows[umLivro].Cells[1].Value = oLivro.TituloLivro;
-            dgvLivros.Rows[umLivro].Cells[2].Value = oLivro.DataDevolucao.ToShortDateString();
-            if (oLivro.DataDevolucao < DateTime.Now.Date)
-               dgvLivros.Rows[umLivro].Cells[3].Value = "S";
-            else
-              dgvLivros.Rows[umLivro].Cells[3].Value = "N";
+            Livro oLivro = osLivros[ondeLivro]; // a variável oLivro fica com o valor do livro encontrado (que está na posição 'ondeLivro')
+            dgvLivros.Rows[umLivro].Cells[0].Value = oLivro.CodigoLivro; // mudamos a primeira célula na coluna do indíce com o respectivo código
+            dgvLivros.Rows[umLivro].Cells[1].Value = oLivro.TituloLivro; //                                                                título
+            dgvLivros.Rows[umLivro].Cells[2].Value = oLivro.DataDevolucao.ToShortDateString(); //                                          data de devolução
+            if (oLivro.DataDevolucao < DateTime.Now.Date) // se a data de devolução for menor que a data atual
+               dgvLivros.Rows[umLivro].Cells[3].Value = "S"; // a devolução do livro está atrasada, e escrevemos 'S' no campo de atraso
+            else // se a data de devolução for maior que a data atual
+              dgvLivros.Rows[umLivro].Cells[3].Value = "N"; // a devolução não está atrasad, e escrevemos 'N' no campo de atraso
           }
         }
 
-        TestarBotoes();
-        stlbMensagem.Text =
+        TestarBotoes(); // chamamos a função que verifica a validade dos botões
+        stlbMensagem.Text = // mudamos a mensagem exibida
           "Registro " + (osLeitores.PosicaoAtual + 1) +
                      "/" + osLeitores.Tamanho;
       }
     }
-    private void LimparTela()
+    private void LimparTela() // função que limpa todos os campos
     {
-      txtCodigoLeitor.Clear();
-      txtNomeLeitor.Clear();
-      txtEndereco.Text = "";
-      dgvLivros.RowCount = 1;
+      txtCodigoLeitor.Clear(); // limpa o textbox do código do leitor
+      txtNomeLeitor.Clear(); // limpa o textbox do nome do leitor
+      txtEndereco.Text = ""; // limpa o textbox do endereço do leitor
+      dgvLivros.RowCount = 1; // deixa o DataGridView com apenas uma coluna
     }
 
-    private void TestarBotoes()
+    private void TestarBotoes() // função que verifica a validade dos botões
     {
-      btnInicio.Enabled = true;
-      btnAnterior.Enabled = true;
-      btnProximo.Enabled = true;
-      btnUltimo.Enabled = true;
-      if (osLeitores.EstaNoInicio)
+      btnInicio.Enabled = true; // habilita todos os botões
+      btnAnterior.Enabled = true; // ^^
+      btnProximo.Enabled = true; // ^^
+      btnUltimo.Enabled = true; // ^^
+      if (osLeitores.EstaNoInicio) // se a posição atual do objeto 'osLeitores' está no primeiro índice
       {
-        btnInicio.Enabled = false;
-        btnAnterior.Enabled = false;
+        btnInicio.Enabled = false; //  é impossível ir para o anterior, e inútil a utilização do botão de início, por isso desabilitamos os dois
+        btnAnterior.Enabled = false; // ^^
       }
-      if (osLeitores.EstaNoFim)
+      if (osLeitores.EstaNoFim) // se a posição atual do objeto 'osLeitores' está no primeiro índice
       {
-        btnProximo.Enabled = false;
-        btnUltimo.Enabled = false;
+        btnProximo.Enabled = false; //  é impossível ir para o próximo, e inútil a utilização do botão de último, por isso desabilitamos os dois
+        btnUltimo.Enabled = false; // ^^
       }
     }
 
@@ -151,7 +161,7 @@ namespace apBiblioteca
       // Exibimos mensagem no statusStrip para instruir o usuário a digitar dados
       stlbMensagem.Text = "Digite o código do novo leitor";
 
-      btnSalvar.Enabled = true;
+      btnSalvar.Enabled = true; // habilitamos o botão salvar
     }
 
     private void txtMatricula_Leave(object sender, EventArgs e)
@@ -227,12 +237,6 @@ namespace apBiblioteca
           AtualizarTela();
         }
       btnSalvar.Enabled = false;
-    }
-
-    private void btnSair_Click(object sender, EventArgs e)
-    {
-      // fecha o formulário mas antes dispara o evento FormClosing
-      Close();  
     }
 
     private void FrmFunc_FormClosing(object sender, FormClosingEventArgs e)
