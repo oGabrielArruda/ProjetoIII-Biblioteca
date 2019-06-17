@@ -79,16 +79,18 @@ namespace apBiblioteca
 
         private void btnDevolve_Click(object sender, EventArgs e)
         {
-            AcharLivro();
+            AcharLivro(); // achamos o livro escolhido
             Devolver(); // chamamos o método devolver
         }
 
 
         void AcharLivro()
         {
-            string cod = oLeitor.CodigoLivroComLeitor[cbxLivros.SelectedIndex];
-            Livro livroProc = new Livro()
-            
+            string codigo = oLeitor.CodigoLivroComLeitor[cbxLivros.SelectedIndex]; // atribuìmos à string 'código' o código do livro escolhido
+            Livro proc = new Livro(codigo); 
+            int onde = -1;
+            if (osLivros.Existe(proc, ref onde)) // se o Livro procurado existe
+                oLivro = osLivros[onde]; // atrbuímos ao 'oLivro' o livro encontrado
         }
 
         void Devolver()
@@ -108,6 +110,7 @@ namespace apBiblioteca
                   } 
               }
             LimparFocar(txtCodLeitor); // limpamos o campo do código do leitor
+            cbxLivros.Items.Clear(); // limpamos a combo box
             btnDevolve.Enabled = false; // desabilitamos o botão de devolução
 
         }
@@ -116,6 +119,11 @@ namespace apBiblioteca
         {
             osLeitores.GravarDados(nomeArqLeitores);
             osLivros.GravarDados(nomeArqLivros);
+        }
+
+        private void cbxLivros_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            btnDevolve.Enabled = true;
         }
 
         void LimparFocar(TextBox qualTxt) // método de limpar e focar algum textbox passado como parâmetro

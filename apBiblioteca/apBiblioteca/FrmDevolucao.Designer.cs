@@ -90,6 +90,7 @@
             this.cbxLivros.Name = "cbxLivros";
             this.cbxLivros.Size = new System.Drawing.Size(335, 33);
             this.cbxLivros.TabIndex = 4;
+            this.cbxLivros.SelectionChangeCommitted += new System.EventHandler(this.cbxLivros_SelectionChangeCommitted);
             // 
             // label3
             // 
