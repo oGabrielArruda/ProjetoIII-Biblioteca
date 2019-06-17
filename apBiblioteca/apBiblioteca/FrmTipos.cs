@@ -205,5 +205,13 @@ namespace apBiblioteca
         {
             Close();
         }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Tem certeza que deseja excluir esse tipo?", "Exclusão", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                osTipos.Excluir(osTipos.PosicaoAtual);
+            }
+        }
     }
 }

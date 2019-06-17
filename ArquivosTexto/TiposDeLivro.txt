@@ -2,6 +2,7 @@
  3Fantasia Infantil   
  7Culinária Boa       
  8Horror              
+12Fantasia            
 13Antiguidade         
 17Récordes            
 23Drama               
