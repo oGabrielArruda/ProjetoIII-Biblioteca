@@ -1,5 +1,9 @@
 000021Júlia Alves de Arruda              Rua Margarida, 307, Vila Muriçoca                  10000441
-000123Gabriel Alves de Arruda            Rua Joana, 321, Parque Bananeira                   0
+000023Cléber Machado                     Rua Carmélia Lima, 593, Parque Das Oliveiras       0
+000123Gabriel Alves de Arruda            Rua Joana, 321, Parque Bananeira                   10012321
 002133Orandir Almeida César              Rua da Batatinha, 231, Jardim Novo Mundo           0
+002356Francisco Da Fonseca Rodrigues     Rua dos Professores, 642, Vila Cotuquense          10004214
+003212Lucas Nacaguma                     Rua Teodoro Santos, 120, Jardim Nova Esperança     0
 003232Otavio Pereira                     Rua Dom Pedro II, 121, Parque Ocidente             0
 231455Carlos Pereira Silva               Rua dos Amarais, 193, Vila Armandina               10000321
+314431Sebastiana Vitória                 Rua das Andorinhas, 733, Jardim Boa Vista          0

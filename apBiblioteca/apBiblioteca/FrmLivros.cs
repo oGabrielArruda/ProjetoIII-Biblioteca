@@ -104,6 +104,17 @@ namespace apBiblioteca
         txtCodigoLivro.Text = osLivros[indice].CodigoLivro + ""; // alteramos o campo de código para o código do livro da posição atual
         txtTituloLivro.Text = osLivros[indice].TituloLivro; // e o mesmo com o título do livro ^^
 
+        bool achouTipo = false;
+        dgvTipos.ClearSelection(); // limpamos a seleção do datagridview
+        for(int i = 0; i < dgvTipos.RowCount && !achouTipo; i++) // enquanto o 'i' for menor que a quantidade de colunas do datagridview, e o tipo não for encontrado
+        {
+           if(int.Parse(dgvTipos.Rows[i].Cells[0].Value.ToString()) == osLivros[indice].TipoLivro) // se o valor do código na coluna 'i' for igual ao código do livro da posição atual
+           {
+              dgvTipos.Rows[i].Selected = true; // selecionamos a coluna do tipo do livro
+              achouTipo = true; // deixamos a variàvel booleana achouTipo igual a verdadeira, saindo do 'for'
+           }
+        }
+
       
         txtLeitorComLivro.Text = "000000"; // alteramos o código do leitor que está com o livro para 000000, que é o padrão, se o livro não estiver emprestado
         txtDataDevolucao.Text = ""; // também mudamos a data de devolução para vazia
@@ -134,6 +145,8 @@ namespace apBiblioteca
       txtLeitorComLivro.Text = "000000"; // deixa como '000000' o campo de leitor com livro
       txtDataDevolucao.Text = ""; // deixa vazio a data de devolução e o campo de nome do leitor
       txtNomeLeitor.Text = ""; // ^^
+
+      dgvTipos.ClearSelection(); // limpamos a seleção do datagridview
     }
 
     private void TestarBotoes() // função que verifica a validade dos botões
@@ -285,7 +298,7 @@ namespace apBiblioteca
 
     private void tpLista_Enter(object sender, EventArgs e) // entrada na tabpage de consulta
     {
-      osLivros.ExibirDados(lsbLivros, "Código  Título"); // exibimos os dados no listbox, com o cabeçalho
+      osLivros.ExibirDados(lsbLivros, "Código  Título                       Cód. Tipo      Data Dev.        Cód. Leitor Com Livro"); // exibimos os dados no listbox, com o cabeçalho
     }
 
     private void btnEditar_Click(object sender, EventArgs e) // click do botão editar

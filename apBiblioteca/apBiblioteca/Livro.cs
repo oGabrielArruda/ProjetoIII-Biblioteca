@@ -102,7 +102,7 @@ namespace apBiblioteca
       String resultado = CodigoLivro + " "+TituloLivro + " " +
              TipoLivro.ToString().PadLeft(tamanhoTipo, ' ');
       if (CodigoLeitorComLivro != "000000")
-         resultado += " " +DataDevolucao.ToShortDateString() + " "+CodigoLeitorComLivro;
+         resultado += "         " +DataDevolucao.ToShortDateString() + "        "+CodigoLeitorComLivro;
       return resultado;
 }
     public String ParaArquivo()

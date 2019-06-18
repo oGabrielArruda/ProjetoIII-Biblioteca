@@ -81,6 +81,7 @@ namespace apBiblioteca
         {
             AcharLivro(); // achamos o livro escolhido
             Devolver(); // chamamos o método devolver
+            cbxLivros.Items.Clear(); // limpa a combo box
         }
 
 

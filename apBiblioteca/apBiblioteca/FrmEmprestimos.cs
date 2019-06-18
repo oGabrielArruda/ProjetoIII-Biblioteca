@@ -110,6 +110,11 @@ namespace apBiblioteca
                                                                      
             oLeitor.QuantosLivrosComLeitor++; //somamos mais 1 na quantidade de livros com o leitor, pois foi emprestado mais um nesse momento
             oLivro.CodigoLeitorComLivro = oLeitor.CodigoLeitor; // alteramos o CódigoLeitorComLivro do livro para o código do leitor que o pegou
+            oLivro.DataDevolucao = dataDev; // altera a data de devolução para a digitada pelo usuário
+
+            btnEmprestar.Enabled = false; // desabilitamos o botão de empréstimo
+            LimparTela(); // limpamos a tela
+            MessageBox.Show("O livro " + oLivro.TituloLivro + " foi emprestado para " + oLeitor.NomeLeitor + " com sucesso!"); // alertamos ao usuário que o empréstimo foi realizado
         }
 
         private void FrmEmprestimos_FormClosing(object sender, FormClosingEventArgs e) // ao fechar o formulário
@@ -130,6 +135,12 @@ namespace apBiblioteca
             qualMtxt.Focus(); // focar :)
         }
 
+        void LimparTela() // função que limpa a tela
+        {
+            txtCodLeitor.Clear(); // limpa o campo de código de leitor
+            txtCodLivro.Clear(); // o campo de código de livro
+            mtxtData.Clear(); // e o campo da data
+        }
 
         void HabilitarBtn() // função de habilitar o botão de empréstimo
         {

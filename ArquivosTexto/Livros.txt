@@ -1,9 +1,11 @@
 0000212Maiores Recordes do Mundo      1731/12/1899000000
 0000231Senhor Dos Anéis - O retorno   1231/12/1899000000
 0000321Melhores Receitas de Bolo       726/05/2019231455
-0000441Palhaço Assassino               831/12/1899000021
+0000432O Pensador: Sócrates           3231/12/1899000000
+0000441Palhaço Assassino               820/06/2019000021
 0000532Matemática Básica 1             231/12/1899000000
 0000542Receitas da Itália              731/12/1899000000
 0002134Revolução dos Bixos             531/12/1899000000
+0004214A história das estrelas        5630/08/2019002356
 0008238As histórias do Egito          1331/12/1899000000
-0012321Harry Potter Final              331/12/1899000000
+0012321Harry Potter Final              320/07/2019000123

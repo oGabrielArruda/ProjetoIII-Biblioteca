@@ -291,11 +291,12 @@
             this.dgvTipos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Código,
             this.Descricao});
-            this.dgvTipos.Location = new System.Drawing.Point(130, 118);
+            this.dgvTipos.Location = new System.Drawing.Point(85, 109);
             this.dgvTipos.MultiSelect = false;
             this.dgvTipos.Name = "dgvTipos";
             this.dgvTipos.ReadOnly = true;
-            this.dgvTipos.Size = new System.Drawing.Size(443, 173);
+            this.dgvTipos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dgvTipos.Size = new System.Drawing.Size(447, 167);
             this.dgvTipos.TabIndex = 7;
             // 
             // Código
@@ -424,10 +425,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lsbLivros.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lsbLivros.FormattingEnabled = true;
+            this.lsbLivros.HorizontalScrollbar = true;
+            this.lsbLivros.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.lsbLivros.ItemHeight = 16;
             this.lsbLivros.Location = new System.Drawing.Point(8, 6);
             this.lsbLivros.Name = "lsbLivros";
-            this.lsbLivros.Size = new System.Drawing.Size(631, 276);
+            this.lsbLivros.Size = new System.Drawing.Size(661, 388);
             this.lsbLivros.TabIndex = 0;
             // 
             // ssMensagem
