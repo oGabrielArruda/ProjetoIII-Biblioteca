@@ -43,6 +43,12 @@ namespace apBiblioteca
             return CodigoTipo.ToString().PadLeft(tamanhoCod, ' ') + DescricaoTipo.PadRight(tamanhoDesc, ' ');
         }
 
+        public override string ToString()
+        {
+            string saida = CodigoTipo.ToString().PadLeft(tamanhoCod, ' ') + "         " + DescricaoTipo.PadRight(tamanhoDesc, ' ');
+            return saida;
+        }
+
         public int CompareTo(Tipo outro)
         {
             return codigoTipo.CompareTo(outro.codigoTipo);
