@@ -4,5 +4,6 @@
 0000441Palhaço Assassino               831/12/1899000021
 0000532Matemática Básica 1             231/12/1899000000
 0000542Receitas da Itália              731/12/1899000000
+0002134Revolução dos Bixos             531/12/1899000000
 0008238As histórias do Egito          1331/12/1899000000
 0012321Harry Potter Final              331/12/1899000000
