@@ -12,10 +12,10 @@ namespace apBiblioteca
 {
   public partial class FrmLivros : Form
   {
-    VetorDados<Livro>  osLivros; // osLivros armazenará os dados lidos e terá os métodos de manutenção
-    VetorDados<Leitor> osLeitores;
+    VetorDados<Livro>  osLivros; // declaramos os objetos com as classes de manutenção
+    VetorDados<Leitor> osLeitores; //  
     VetorDados<Tipo> osTipos;
-    int ondeIncluir = 0;        // global --> acessível na classe toda
+    int ondeIncluir = 0;        
 
         string nomeArquivoLeitores, nomeArquivoLivros, nomeArquivoTipos;
     public FrmLivros()

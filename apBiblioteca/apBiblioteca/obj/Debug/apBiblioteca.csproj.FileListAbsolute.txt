@@ -81,3 +81,18 @@ C:\Users\Gabripol\Desktop\g poj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Deb
 C:\Users\Gabripol\Desktop\g poj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csproj.CoreCompileInputs.cache
 C:\Users\Gabripol\Desktop\g poj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.exe
 C:\Users\Gabripol\Desktop\g poj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.pdb
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\bin\Debug\apBiblioteca.exe.config
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\bin\Debug\apBiblioteca.exe
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\bin\Debug\apBiblioteca.pdb
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csprojAssemblyReference.cache
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmDevolucao.resources
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmEmprestimos.resources
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmLeitores.resources
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmLivros.resources
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmBiblioteca.resources
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.FrmTipos.resources
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.Properties.Resources.resources
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csproj.GenerateResource.cache
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.csproj.CoreCompileInputs.cache
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.exe
+C:\Users\Gabripol\Desktop\opoj\projBiblioteca\apBiblioteca\apBiblioteca\obj\Debug\apBiblioteca.pdb
