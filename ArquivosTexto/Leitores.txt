@@ -1,15 +1,15 @@
 000021Júlia Alves de Arruda              Rua Margarida, 307, Vila Muriçoca                  10000441
 000023Cléber Machado                     Rua Carmélia Lima, 593, Parque Das Oliveiras       0
 000123Gabriel Alves de Arruda            Rua Joana, 321, Parque Bananeira                   10012321
-000321Odair Alves Júnior                 Rua Francisco Pinto, 728, Jardim Fubá              0
+000321Odair Alves Júnior                 Rua Francisco Pinto, 728, Jardim Fubá              10002355
 000433Elon Musk                          Rua Espacial, 333, Vila Estelar                    0
 002133Orandir Almeida César              Rua da Batatinha, 231, Jardim Novo Mundo           0
 002320Fernanda Maria Silva               Rua Margarida, 201, Vila Muriçoca                  0
-002356Francisco Da Fonseca Rodrigues     Rua dos Professores, 642, Vila Cotuquense          10004214
+002356Francisco Da Fonseca Rodrigues     Rua dos Professores, 642, Vila Cotuquense          200042140000012
 003212Lucas Nacaguma                     Rua Teodoro Santos, 120, Jardim Nova Esperança     0
 003232Otavio Pereira                     Rua Dom Pedro II, 121, Parque Ocidente             0
 111111Ana Vitória Luzia                  Rua dos Amarais, 53, Vila Armandina                0
 231455Carlos Pereira Silva               Rua dos Amarais, 193, Vila Armandina               10000321
 232388Marcos José Armando                Rua dos Hermanos, 112, Parque Ocidente             0
-314431Sebastiana Vitória                 Rua das Andorinhas, 733, Jardim Boa Vista          0
+314431Sebastiana Vitória                 Rua das Andorinhas, 733, Jardim Boa Vista          10000920
 323222Pedro Varanda Zanovello            Rua Tatuapé, 989, Parque Ouro Verde                0
