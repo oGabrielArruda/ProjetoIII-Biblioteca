@@ -32,6 +32,7 @@ namespace apBiblioteca
             {
                 osTipos.LerDados(dlgAbrir.FileName); // lemos os dados do arquivo texto de tipos
                 btnInicio.PerformClick(); // chamamos o evento do click do botão início
+                osTipos.Ordenar(); // ordenamos os Tipos para serem exibidos em ordem correta
             }
 
             if (FrmBiblioteca.Consulta) // se é uma consulta

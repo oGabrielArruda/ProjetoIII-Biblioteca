@@ -37,6 +37,7 @@ namespace apBiblioteca
             {
                 nomeArquivoLivros = dlgAbrir.FileName; // string do nome do arquivo dos livros recebe o nome do arquivo aberto
                 osLivros.LerDados(nomeArquivoLivros); // lemos os dados do arquivo aberto
+                osLivros.Ordenar(); // ordenamos os Livros para eles serem exibidos em ordem
             }
 
             osLeitores = new VetorDados<Leitor>(50); // instancia o objeto osLeitores com a classe VetorDados 

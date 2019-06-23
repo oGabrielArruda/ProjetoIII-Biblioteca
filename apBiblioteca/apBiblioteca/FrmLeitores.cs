@@ -39,8 +39,9 @@ namespace apBiblioteca
       dlgAbrir.Title = "Selecione o arquivo com os dados de leitores"; // mudamos o título do OpenFileDialog para o usuário saber qual arquivo deve ser aberto
       if (dlgAbrir.ShowDialog() == DialogResult.OK)  // se abriu o arquivo
       {
-        nomeArquivoLeitores = dlgAbrir.FileName; // string do nome do arquivo dos leitores recebe o nome do arquivo aberto
-                osLeitores.LerDados(nomeArquivoLeitores); // lemos os dados do arquivo aberto
+          nomeArquivoLeitores = dlgAbrir.FileName; // string do nome do arquivo dos leitores recebe o nome do arquivo aberto
+          osLeitores.LerDados(nomeArquivoLeitores); // lemos os dados do arquivo aberto
+          osLeitores.Ordenar(); // ordenamos o arquivo de Leitores para eles serem exibidos em ordem
       }
 
       osLivros = new VetorDados<Livro>(50); // instancia o objeto osLivros com a classe VetorDados 
