@@ -13,6 +13,8 @@ namespace apBiblioteca
     public partial class FrmTipos : Form
     {
         VetorDados<Tipo> osTipos;
+        VetorDados<Livro> osLivros;
+        string nomeArqTipos, nomeArqLivros;
         public FrmTipos()
         {
             InitializeComponent();
@@ -28,11 +30,22 @@ namespace apBiblioteca
                     (item as ToolStripButton).ImageIndex = indice++;
             // ----------------------------------- //
             osTipos = new VetorDados<Tipo>(50); // instancia o objeto 'osTipos' na classe VetorDados usando a classe Tipo como registro
+            dlgAbrir.Title = "Abra o arquivo texto dos tipos";
             if(dlgAbrir.ShowDialog() == DialogResult.OK) // se abriu o arquvio
             {
-                osTipos.LerDados(dlgAbrir.FileName); // lemos os dados do arquivo texto de tipos
-                btnInicio.PerformClick(); // chamamos o evento do click do botão início
+                nomeArqTipos = dlgAbrir.FileName;
+                osTipos.LerDados(nomeArqTipos); // lemos os dados do arquivo texto de tipos
                 osTipos.Ordenar(); // ordenamos os Tipos para serem exibidos em ordem correta
+            }
+
+
+            osLivros = new VetorDados<Livro>(50);
+            dlgAbrir.Title = "Abra o arquivo texto dos livros";
+            if (dlgAbrir.ShowDialog() == DialogResult.OK) // se abriu o arquvio
+            {
+                nomeArqLivros = dlgAbrir.FileName;
+                osLivros.LerDados(nomeArqLivros); // lemos os dados do arquivo texto de tipos
+                btnInicio.PerformClick(); // chamamos o evento do click do botão início
             }
 
             if (FrmBiblioteca.Consulta) // se é uma consulta
@@ -73,12 +86,14 @@ namespace apBiblioteca
                 txtDescricao.Text = osTipos[indice].DescricaoTipo; // fazemos o mesmo com o campo de descirção
             }
             TestarBotoes(); // verificamos a validade dos botões
+            AtualizarDGV(); // atualizamos o DataGridView de livros
         }
         private void LimparTela() // função que limpa a tela
         {
             txtCodigoTipo.Clear(); // limpa o campo de código do tipo
             txtDescricao.Clear(); // e também o campo da descrição do tipo
         }
+
 
         private void TestarBotoes() // função que verifica a validade dos botões
         {
@@ -96,6 +111,40 @@ namespace apBiblioteca
                 btnProximo.Enabled = false;
                 btnUltimo.Enabled = false;
             }
+        }
+
+        private void AtualizarDGV() // função que atualiza o data grid view dos livros com o tipo exibido
+        {
+            int qtsLivros = 0; // declaramos uma váriavel que terá a quantidade de livros no respectivo tipo -> fazemos isso para saber a quantidade de linhas que o 'dgv' terá
+            for (int i = 0; i < osLivros.Tamanho; i++) // enquanto o 'i' for menor que a quantidade de livros
+            {
+                if(osLivros[i].TipoLivro == osTipos[osTipos.PosicaoAtual].CodigoTipo) // se o código do tipo do livro indexado de 'i' for igual ao código do tipo na posição atual (exibida na tela)
+                {
+                    qtsLivros++; // adicionamos +1 na quantidade de livros
+                }
+            }
+            if (qtsLivros > 0) // se há um livro com esse tipo
+            {
+                dgvLivrosTipo.RowCount = qtsLivros; // alteramos a quantidade de linhas no datagridview para q quantidade de livros no determinado tipo
+                int indice = 0; // variável que será a linha que incluiremos o livro
+
+                for (int i = 0; i < osLivros.Tamanho; i++) // percorremos novamente os livros
+                {
+                    if (osLivros[i].TipoLivro == osTipos[osTipos.PosicaoAtual].CodigoTipo) // se o tipo for o exibido na tela
+                    {
+                        dgvLivrosTipo.Rows[indice].Cells[0].Value = osLivros[i].CodigoLivro; // eibimos na linha 'indice' os valores de código e titulo do livro
+                        dgvLivrosTipo.Rows[indice].Cells[1].Value = osLivros[i].TituloLivro;
+                        indice++; // somamos 1 no 'indice', assim o próximo valor será exibido em baixo do adicionado nessa vez
+                    }
+                }
+            }
+            else  // se não há um livro com este tipo, limpamos o datagirdview
+            {
+                dgvLivrosTipo.RowCount = 1; // deixamos apenas uma linha no dgv
+                dgvLivrosTipo.Rows[0].Cells[0].Value = ""; // limpamos esta linha
+                dgvLivrosTipo.Rows[0].Cells[1].Value = "";
+            }
+              
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -199,7 +248,7 @@ namespace apBiblioteca
 
         private void FrmTipos_FormClosing(object sender, FormClosingEventArgs e) // evento disparado quando o formulário está fechando
         {
-            osTipos.GravarDados(dlgAbrir.FileName); // salvamos os tipos no arquivo texto de tipos
+            osTipos.GravarDados(nomeArqTipos); // salvamos os tipos no arquivo texto de tipos
         }
 
         private void btnCancelar_Click(object sender, EventArgs e) // click do botão cancelar

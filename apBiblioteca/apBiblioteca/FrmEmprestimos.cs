@@ -91,16 +91,8 @@ namespace apBiblioteca
 
         private void mtxtData_Leave(object sender, EventArgs e) // ao sair do campo da data de devolução
         {
-            try // tentamos converter a data digitada
-            {
                 dataDev = Convert.ToDateTime(mtxtData.Text); // atríbuimos à data de devolução a data digitada
                 HabilitarBtn(); // tentamos habilitar o botão
-            }
-            catch // se o usuário digitou de forma incorreta
-            {
-                MessageBox.Show("Digite a data corretamente"); // alertamos ele 
-                LimparFocar(mtxtData); //limpamos e focamos o campo de data
-            }
         }
 
         private void Emprestar_Click(object sender, EventArgs e) // click do botão emprestar
@@ -114,6 +106,7 @@ namespace apBiblioteca
 
             btnEmprestar.Enabled = false; // desabilitamos o botão de empréstimo
             LimparTela(); // limpamos a tela
+            txtCodLeitor.Focus(); // focamos no campo do código do leitors
             MessageBox.Show("O livro " + oLivro.TituloLivro + " foi emprestado para " + oLeitor.NomeLeitor + " com sucesso!"); // alertamos ao usuário que o empréstimo foi realizado
         }
 

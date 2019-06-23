@@ -59,11 +59,16 @@
             this.tpCadastro = new System.Windows.Forms.TabPage();
             this.tpLista = new System.Windows.Forms.TabPage();
             this.lsbLista = new System.Windows.Forms.ListBox();
+            this.dgvLivrosTipo = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             this.barraDeFerramentas.SuspendLayout();
             this.ssMensagem.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tpCadastro.SuspendLayout();
             this.tpLista.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLivrosTipo)).BeginInit();
             this.SuspendLayout();
             // 
             // dlgAbrir
@@ -296,7 +301,7 @@
             this.ssMensagem.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.stlbMensagem});
-            this.ssMensagem.Location = new System.Drawing.Point(0, 343);
+            this.ssMensagem.Location = new System.Drawing.Point(0, 464);
             this.ssMensagem.Name = "ssMensagem";
             this.ssMensagem.Size = new System.Drawing.Size(724, 22);
             this.ssMensagem.TabIndex = 6;
@@ -348,11 +353,13 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 41);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(691, 299);
+            this.tabControl1.Size = new System.Drawing.Size(691, 420);
             this.tabControl1.TabIndex = 7;
             // 
             // tpCadastro
             // 
+            this.tpCadastro.Controls.Add(this.label3);
+            this.tpCadastro.Controls.Add(this.dgvLivrosTipo);
             this.tpCadastro.Controls.Add(this.txtDescricao);
             this.tpCadastro.Controls.Add(this.txtCodigoTipo);
             this.tpCadastro.Controls.Add(this.label1);
@@ -360,7 +367,7 @@
             this.tpCadastro.Location = new System.Drawing.Point(4, 29);
             this.tpCadastro.Name = "tpCadastro";
             this.tpCadastro.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCadastro.Size = new System.Drawing.Size(683, 266);
+            this.tpCadastro.Size = new System.Drawing.Size(683, 387);
             this.tpCadastro.TabIndex = 0;
             this.tpCadastro.Text = "Cadastro";
             this.tpCadastro.UseVisualStyleBackColor = true;
@@ -387,11 +394,45 @@
             this.lsbLista.Size = new System.Drawing.Size(671, 256);
             this.lsbLista.TabIndex = 0;
             // 
+            // dgvLivrosTipo
+            // 
+            this.dgvLivrosTipo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLivrosTipo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2});
+            this.dgvLivrosTipo.Location = new System.Drawing.Point(22, 152);
+            this.dgvLivrosTipo.Name = "dgvLivrosTipo";
+            this.dgvLivrosTipo.Size = new System.Drawing.Size(626, 229);
+            this.dgvLivrosTipo.TabIndex = 6;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Código";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 150;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Nome";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 430;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 120);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(157, 20);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Livros com este Tipo:";
+            // 
             // FrmTipos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(724, 365);
+            this.ClientSize = new System.Drawing.Size(724, 486);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.ssMensagem);
             this.Controls.Add(this.barraDeFerramentas);
@@ -407,6 +448,7 @@
             this.tpCadastro.ResumeLayout(false);
             this.tpCadastro.PerformLayout();
             this.tpLista.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLivrosTipo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -443,5 +485,9 @@
         private System.Windows.Forms.TabPage tpCadastro;
         private System.Windows.Forms.TabPage tpLista;
         private System.Windows.Forms.ListBox lsbLista;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgvLivrosTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
     }
 }
